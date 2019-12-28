@@ -1,0 +1,60 @@
+graph namespace {
+	
+	node [shape=record]
+
+	Point [label="{\N|
+			float x\l|
+			float y\l|
+			float z\l}"]
+	
+	Element [label="{Node|
+			  Point p\l|
+			  T * data}"]
+
+	AABB [label="{\N|
+			Point center\l|
+			float width\l|
+			float height\l|
+			float depth\l|
+			bool contains(Node node)\l|
+			bool intersects(AABB &other)\l}"]
+
+	QuadTree [label="{\N|
+			   AABB boundary\l|
+			   int capacity = 4\l|
+			   Node nodes[capacity]\l|
+			   QuadTree * NW\l|
+			   QuadTree * NE\l|
+			   QuadTree * SE\l|
+			   QuadTree * SW\l|
+			   bool insert(Node node)\l|
+			   Node[] query(AABB &range)\l|
+			   void subdivide()\l}"]
+	
+	OctTree [label="{\N|
+			  AABB boundary\l|
+			  int capacity = 8\l|
+			  Node nodes[capacity]\l|
+			  OctTree * NWN\l|
+			  OctTree * NEN\l|
+			  OctTree * SEN\l|
+			  OctTree * SWN\l|
+			  OctTree * NWS\l|
+			  OctTree * NES\l|
+			  OctTree * SES\l|
+			  OctTree * SWS\l|
+			  bool insert(Node node)\l|
+			  Node[] query(AABB &range)\l|
+			  void subdivide()\l}"]
+	
+	
+	Point -- AABB
+	Point -- Element
+	Element -- QuadTree
+	Element -- OctTree
+	AABB -- QuadTree
+	AABB -- OctTree
+	QuadTree -- QuadTree
+	OctTree -- OctTree
+
+}
