@@ -2,24 +2,23 @@ graph namespace {
 	
 	node [shape=record]
 
-	Point [label="{\N|
-			float x\l|
-			float y\l|
-			float z\l}"]
-	
-	Element [label="{Node|
-			  Point p\l|
+	Element [label="{Node\<T,U\>|
+			  U x\l|
+			  U y\l|
+			  U z\l|
 			  T * data}"]
 
-	AABB [label="{\N|
-			Point center\l|
-			float width\l|
-			float height\l|
-			float depth\l|
+	AABB [label="{\N\<U\>|
+			U x\l|
+			U y\l|
+			U z\l|
+			U w\l|
+			U h\l|
+			U d\l|
 			bool contains(Node node)\l|
-			bool intersects(AABB &other)\l}"]
+			bool intersects(AABB other)\l}"]
 
-	QuadTree [label="{\N|
+	QuadTree [label="{\N\<T,U\>|
 			   AABB boundary\l|
 			   int capacity = 4\l|
 			   Node nodes[capacity]\l|
@@ -28,10 +27,10 @@ graph namespace {
 			   QuadTree * SE\l|
 			   QuadTree * SW\l|
 			   bool insert(Node node)\l|
-			   Node[] query(AABB &range)\l|
+			   Node[] query(AABB range)\l|
 			   void subdivide()\l}"]
 	
-	OctTree [label="{\N|
+	OcTree [label="{\N\<T,U\>|
 			  AABB boundary\l|
 			  int capacity = 8\l|
 			  Node nodes[capacity]\l|
@@ -44,17 +43,15 @@ graph namespace {
 			  OctTree * SES\l|
 			  OctTree * SWS\l|
 			  bool insert(Node node)\l|
-			  Node[] query(AABB &range)\l|
+			  Node[] query(AABB range)\l|
 			  void subdivide()\l}"]
 	
 	
-	Point -- AABB
-	Point -- Element
 	Element -- QuadTree
-	Element -- OctTree
+	Element -- OcTree
 	AABB -- QuadTree
-	AABB -- OctTree
+	AABB -- OcTree
 	QuadTree -- QuadTree
-	OctTree -- OctTree
+	OcTree -- OcTree
 
 }
