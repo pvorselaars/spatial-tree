@@ -198,28 +198,6 @@ class QuadTree {
 
 	}
 
-	void draw(sf::RenderWindow& window){
-
-		sf::RectangleShape b(sf::Vector2f(2*boundary.w, 2*boundary.h)*16.f);
-		b.setPosition(sf::Vector2f((boundary.x-boundary.w), (boundary.y-boundary.h))*16.f);
-		b.setFillColor(sf::Color::Transparent);
-		b.setOutlineThickness(1.f);
-		b.setOutlineColor(sf::Color(255,0,0));
-		window.draw(b);
-
-		if(NW != nullptr){
-			
-		NW->draw(window);
-		NE->draw(window);
-		SE->draw(window);
-		SW->draw(window);
-
-		}
-
-		
-		
-	} 
-
 };
 
 template <class T, class U>
@@ -430,10 +408,8 @@ class OcTree {
 			SSW->query(range, found);
 		}
 
-
 		return found;
 
 	}
-
 
 };
