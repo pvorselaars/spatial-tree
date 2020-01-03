@@ -1,6 +1,7 @@
 graph namespace {
 	
-	node [shape=record]
+	graph [bgcolor=transparent]
+	node [shape=record,style=filled,fillcolor=white]
 
 	Element [label="{Node\<T,U\>|
 			  U x\l|
