@@ -6,7 +6,7 @@ graph namespace {
 			  U x\l|
 			  U y\l|
 			  U z\l|
-			  T * data}"]
+			  T * data\l}"]
 
 	AABB [label="{\N\<U\>|
 			U x\l|
@@ -19,31 +19,31 @@ graph namespace {
 			bool intersects(AABB other)\l}"]
 
 	QuadTree [label="{\N\<T,U\>|
-			   AABB boundary\l|
+			   AABB\<U\> boundary\l|
 			   int capacity = 4\l|
-			   Node nodes[capacity]\l|
+			   std::vector\<Node\> nodes[capacity]\l|
 			   QuadTree * NW\l|
 			   QuadTree * NE\l|
 			   QuadTree * SE\l|
 			   QuadTree * SW\l|
 			   bool insert(Node node)\l|
-			   Node[] query(AABB range)\l|
+			   std::vector\<Node\> query(AABB range)\l|
 			   void subdivide()\l}"]
 	
 	OcTree [label="{\N\<T,U\>|
-			  AABB boundary\l|
+			  AABB\<U\> boundary\l|
 			  int capacity = 8\l|
-			  Node nodes[capacity]\l|
-			  OctTree * NWN\l|
-			  OctTree * NEN\l|
-			  OctTree * SEN\l|
-			  OctTree * SWN\l|
-			  OctTree * NWS\l|
-			  OctTree * NES\l|
-			  OctTree * SES\l|
-			  OctTree * SWS\l|
+			  std::vector\<Node\> nodes[capacity]\l|
+			  OcTree * NWN\l|
+			  OcTree * NEN\l|
+			  OcTree * SEN\l|
+			  OcTree * SWN\l|
+			  OcTree * NWS\l|
+			  OcTree * NES\l|
+			  OcTree * SES\l|
+			  OcTree * SWS\l|
 			  bool insert(Node node)\l|
-			  Node[] query(AABB range)\l|
+			  std::vector\<Node\> query(AABB range)\l|
 			  void subdivide()\l}"]
 	
 	
