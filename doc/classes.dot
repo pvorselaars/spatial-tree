@@ -1,4 +1,4 @@
-graph namespace {
+graph classes {
 	
 	graph [bgcolor=transparent]
 	node [shape=record,style=filled,fillcolor=white]
@@ -19,9 +19,19 @@ graph namespace {
 			bool contains(Node node)\l|
 			bool intersects(AABB other)\l}"]
 
+	LinTree [label="{\N\<T,U\>|
+			   AABB\<U\> boundary\l|
+			   unsigned int capacity\l|
+			   std::vector\<Node\> nodes[capacity]\l|
+			   LinTree * W\l|
+			   LinTree * E\l|
+			   bool insert(Node node)\l|
+			   std::vector\<Node\> query(AABB range)\l|
+			   void subdivide()\l}"]
+
 	QuadTree [label="{\N\<T,U\>|
 			   AABB\<U\> boundary\l|
-			   int capacity = 4\l|
+			   unsigned int capacity\l|
 			   std::vector\<Node\> nodes[capacity]\l|
 			   QuadTree * NW\l|
 			   QuadTree * NE\l|
@@ -33,7 +43,7 @@ graph namespace {
 	
 	OcTree [label="{\N\<T,U\>|
 			  AABB\<U\> boundary\l|
-			  int capacity = 8\l|
+			  unsigned int capacity\l|
 			  std::vector\<Node\> nodes[capacity]\l|
 			  OcTree * NWN\l|
 			  OcTree * NEN\l|
@@ -48,10 +58,13 @@ graph namespace {
 			  void subdivide()\l}"]
 	
 	
+	Element -- LinTree
 	Element -- QuadTree
 	Element -- OcTree
+	AABB -- LinTree
 	AABB -- QuadTree
 	AABB -- OcTree
+	LinTree -- LinTree
 	QuadTree -- QuadTree
 	OcTree -- OcTree
 
