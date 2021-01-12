@@ -1,9 +1,9 @@
 # spatial-tree
 
-A simple C++ template library that implements quadtrees and octrees for different classes and coordinate precision.
+A simple C++ template library that implements lintrees, quadtrees and octrees for different classes and coordinate precision.
 
-## namespace
+## class diagram
 
-![namespace](doc/namespace.png)
+![classes](doc/classes.dot.png)
 
 
