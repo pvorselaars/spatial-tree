@@ -19,16 +19,6 @@ graph classes {
 			bool contains(Node node)\l|
 			bool intersects(AABB other)\l}"]
 
-	LinTree [label="{\N\<T,U\>|
-			   AABB\<U\> boundary\l|
-			   unsigned int capacity\l|
-			   std::vector\<Node\> nodes[capacity]\l|
-			   LinTree * W\l|
-			   LinTree * E\l|
-			   bool insert(Node node)\l|
-			   std::vector\<Node\> query(AABB range)\l|
-			   void subdivide()\l}"]
-
 	QuadTree [label="{\N\<T,U\>|
 			   AABB\<U\> boundary\l|
 			   unsigned int capacity\l|
@@ -58,13 +48,10 @@ graph classes {
 			  void subdivide()\l}"]
 	
 	
-	Element -- LinTree
 	Element -- QuadTree
 	Element -- OcTree
-	AABB -- LinTree
 	AABB -- QuadTree
 	AABB -- OcTree
-	LinTree -- LinTree
 	QuadTree -- QuadTree
 	OcTree -- OcTree
 
