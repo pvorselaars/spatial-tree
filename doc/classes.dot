@@ -19,8 +19,8 @@ graph classes {
 			bool intersects(const Sphere &other)\l}"]
 
 	Cuboid [label="{Cuboid\<U\>|
-			Vector<U> position\l|
-			Vector<U> dimensions\l|
+			Vector\<U\> position\l|
+			Vector\<U\> dimensions\l|
 			bool contains(const Node &node)\l|
 			bool intersects(const Cuboid &other)\l}"]
 

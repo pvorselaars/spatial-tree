@@ -57,19 +57,21 @@
 <!-- Cuboid -->
 <g id="node4" class="node">
 <title>Cuboid</title>
-<polygon fill="white" stroke="black" points="49.5,-428.5 49.5,-497.5 268.5,-497.5 268.5,-428.5 49.5,-428.5"/>
-<text text-anchor="middle" x="159" y="-482.3" font-family="Times,serif" font-size="14.00">Cuboid&lt;U&gt;</text>
+<polygon fill="white" stroke="black" points="49.5,-405.5 49.5,-520.5 268.5,-520.5 268.5,-405.5 49.5,-405.5"/>
+<text text-anchor="middle" x="159" y="-505.3" font-family="Times,serif" font-size="14.00">Cuboid&lt;U&gt;</text>
+<polyline fill="none" stroke="black" points="49.5,-497.5 268.5,-497.5 "/>
+<text text-anchor="start" x="57.5" y="-482.3" font-family="Times,serif" font-size="14.00">Vector&lt;U&gt; position</text>
 <polyline fill="none" stroke="black" points="49.5,-474.5 268.5,-474.5 "/>
-<polyline fill="none" stroke="black" points="49.5,-474.5 268.5,-474.5 "/>
-<polyline fill="none" stroke="black" points="49.5,-474.5 268.5,-474.5 "/>
-<text text-anchor="start" x="57.5" y="-459.3" font-family="Times,serif" font-size="14.00">bool contains(const Node &amp;node)</text>
+<text text-anchor="start" x="57.5" y="-459.3" font-family="Times,serif" font-size="14.00">Vector&lt;U&gt; dimensions</text>
 <polyline fill="none" stroke="black" points="49.5,-451.5 268.5,-451.5 "/>
-<text text-anchor="start" x="57.5" y="-436.3" font-family="Times,serif" font-size="14.00">bool intersects(const Cuboid &amp;other)</text>
+<text text-anchor="start" x="57.5" y="-436.3" font-family="Times,serif" font-size="14.00">bool contains(const Node &amp;node)</text>
+<polyline fill="none" stroke="black" points="49.5,-428.5 268.5,-428.5 "/>
+<text text-anchor="start" x="57.5" y="-413.3" font-family="Times,serif" font-size="14.00">bool intersects(const Cuboid &amp;other)</text>
 </g>
 <!-- Vector&#45;&#45;Cuboid -->
 <g id="edge2" class="edge">
 <title>Vector&#45;&#45;Cuboid</title>
-<path fill="none" stroke="black" d="M309.64,-573.8C279.2,-551.62 237,-520.86 205,-497.54"/>
+<path fill="none" stroke="black" d="M309.64,-573.8C288.54,-558.44 261.82,-538.94 236.74,-520.66"/>
 </g>
 <!-- QuadTree -->
 <g id="node5" class="node">
@@ -148,12 +150,12 @@
 <!-- Cuboid&#45;&#45;QuadTree -->
 <g id="edge6" class="edge">
 <title>Cuboid&#45;&#45;QuadTree</title>
-<path fill="none" stroke="black" d="M154.02,-428.38C150.04,-401.54 144.18,-362.02 138.34,-322.62"/>
+<path fill="none" stroke="black" d="M150.6,-405.38C147.02,-381.2 142.66,-351.84 138.32,-322.56"/>
 </g>
 <!-- Cuboid&#45;&#45;OcTree -->
 <g id="edge7" class="edge">
 <title>Cuboid&#45;&#45;OcTree</title>
-<path fill="none" stroke="black" d="M201.1,-428.3C220.9,-411.5 244.24,-390.24 263,-369 265.94,-365.66 268.88,-362.24 271.82,-358.78"/>
+<path fill="none" stroke="black" d="M226.98,-405.42C239.46,-393.88 252.02,-381.44 263,-369 265.94,-365.66 268.88,-362.24 271.82,-358.78"/>
 </g>
 <!-- QuadTree&#45;&#45;QuadTree -->
 <g id="edge8" class="edge">
