@@ -3,24 +3,29 @@ graph classes {
 	graph [bgcolor=transparent]
 	node [shape=record,style=filled,fillcolor=white]
 
-	Element [label="{Node\<T,U\>|
+	Vector [label="{Vector\<U\>|
 			  U x\l|
 			  U y\l|
-			  U z\l|
+			  U z\l}"]
+
+	Element [label="{Node\<T,U\>|
+			  Vector\<U\> position\l|
 			  T * data\l}"]
 
-	AABB [label="{\N\<U\>|
-			U x\l|
-			U y\l|
-			U z\l|
-			U w\l|
-			U h\l|
-			U d\l|
-			bool contains(Node node)\l|
-			bool intersects(AABB other)\l}"]
+	Sphere [label="{Sphere\<U\>|
+			Vector\<U\> position\l|
+			U radius\l|
+			bool contains(const Node &node)\l|
+			bool intersects(const Sphere &other)\l}"]
 
-	QuadTree [label="{\N\<T,U\>|
-			   AABB\<U\> boundary\l|
+	Cuboid [label="{Cuboid\<U\>|
+			Vector<U> position\l|
+			Vector<U> dimensions\l|
+			bool contains(const Node &node)\l|
+			bool intersects(const Cuboid &other)\l}"]
+
+	QuadTree [label="{QuadTree\<T,U\>|
+			   Cuboid\<U\> boundary\l|
 			   unsigned int capacity\l|
 			   std::vector\<Node\> nodes[capacity]\l|
 			   QuadTree * NW\l|
@@ -28,11 +33,12 @@ graph classes {
 			   QuadTree * SE\l|
 			   QuadTree * SW\l|
 			   bool insert(Node node)\l|
-			   std::vector\<Node\> query(AABB range)\l|
+			   std::vector\<Node\> query(Cuboid range)\l|
+			   std::vector\<Node\> query(Sphere range)\l|
 			   void subdivide()\l}"]
 	
-	OcTree [label="{\N\<T,U\>|
-			  AABB\<U\> boundary\l|
+	OcTree [label="{OcTree\<T,U\>|
+			  Cuboid\<U\> boundary\l|
 			  unsigned int capacity\l|
 			  std::vector\<Node\> nodes[capacity]\l|
 			  OcTree * NWN\l|
@@ -44,14 +50,17 @@ graph classes {
 			  OcTree * SES\l|
 			  OcTree * SWS\l|
 			  bool insert(Node node)\l|
-			  std::vector\<Node\> query(AABB range)\l|
+			  std::vector\<Node\> query(Cuboid range)\l|
+			  std::vector\<Node\> query(Sphere range)\l|
 			  void subdivide()\l}"]
 	
-	
+	Vector -- Element
+	Vector -- Cuboid
+	Vector -- Sphere
 	Element -- QuadTree
 	Element -- OcTree
-	AABB -- QuadTree
-	AABB -- OcTree
+	Cuboid -- QuadTree
+	Cuboid -- OcTree
 	QuadTree -- QuadTree
 	OcTree -- OcTree
 
