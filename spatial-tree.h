@@ -144,6 +144,57 @@ class Cuboid {
 	}
 };
 
+template <class U>
+class Sphere {
+	public:
+	Sphere(U X, U Y, U Z, U R) : 
+		position(X, Y, Z), radius(R) {};
+
+	Sphere() : position(0,0,0), radius(10) {};
+
+	Sphere& operator=(const Sphere &other){
+		position = other.position;
+		radius = other.radius;
+
+		return *this;
+	}
+	
+	Vector<U> position;
+	U radius;
+
+	bool contains(const Vector<U> &v) const {
+
+		return ((v.x - position.x)*(v.x - position.x) + (v.y - position.y)*(v.y - position.y) + (v.z - position.z)*(v.z - position.z) <= radius*radius);
+
+	}
+
+	bool intersect(const Cuboid<U> &other) const {
+
+		Vector<U> C1(other.dimensions.x, other.dimensions.y, other.dimensions.z);
+		Vector<U> C2(-other.dimensions.x, -other.dimensions.y, -other.dimensions.z);
+
+		C1 += other.position;
+		C2 += other.position;
+		U R2 = radius*radius;
+
+		if(position.x < C1.x) R2 -= (position.x - C1.x)*(position.x - C1.x);
+		else if(position.x > C2.x) R2 -= (position.x - C2.x)*(position.x - C2.x);
+		if(position.y < C1.y) R2 -= (position.y - C1.y)*(position.y - C1.y);
+		else if(position.y > C2.y) R2 -= (position.y - C2.y)*(position.y - C2.y);
+		if(position.z < C1.z) R2 -= (position.z - C1.z)*(position.z - C1.z);
+		else if(position.z > C2.z) R2 -= (position.z - C2.z)*(position.z - C2.z);
+		return R2 > 0;
+		
+	}
+
+	bool intersect(const Sphere<U> &other) const {
+
+		return ( sqrt((position.x - other.position.x)*(position.x - other.position.x) + (position.y - other.position.y)*(position.y - other.position.y) + (position.z - other.position.z)*(position.z - other.position.z)) <= radius + other.radius );
+		
+	}
+
+};
+
 template <class T, class U>
 class QuadTree {
 	public:
@@ -286,7 +337,6 @@ class QuadTree {
 			SE->query(range, found);
 			SW->query(range, found);
 		}
-
 
 		return found;
 
