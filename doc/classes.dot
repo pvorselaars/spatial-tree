@@ -15,32 +15,32 @@ graph classes {
 	Sphere [label="{Sphere\<U\>|
 			Vector\<U\> position\l|
 			U radius\l|
-			bool contains(const Node &node)\l|
-			bool intersects(const Sphere &other)\l}"]
+			bool contains(const Node\<T,U\> &node)\l|
+			bool intersects(const Sphere\<U\> &other)\l}"]
 
 	Cuboid [label="{Cuboid\<U\>|
 			Vector\<U\> position\l|
 			Vector\<U\> dimensions\l|
-			bool contains(const Node &node)\l|
-			bool intersects(const Cuboid &other)\l}"]
+			bool contains(const Node\<T,U\> &node)\l|
+			bool intersects(const Cuboid\<U\> &other)\l}"]
 
 	QuadTree [label="{QuadTree\<T,U\>|
 			   Cuboid\<U\> boundary\l|
 			   unsigned int capacity\l|
-			   std::vector\<Node\> nodes[capacity]\l|
+			   std::vector\<Node\<T,U\>\> nodes[capacity]\l|
 			   QuadTree * NW\l|
 			   QuadTree * NE\l|
 			   QuadTree * SE\l|
 			   QuadTree * SW\l|
-			   bool insert(Node node)\l|
-			   std::vector\<Node\> query(Cuboid range)\l|
-			   std::vector\<Node\> query(Sphere range)\l|
+			   bool insert(Node\<T,U\> node)\l|
+			   std::vector\<Node\<T,U\>\> query(Cuboid\<U\> range)\l|
+			   std::vector\<Node\<T,U\>\> query(Sphere\<U\> range)\l|
 			   void subdivide()\l}"]
 	
 	OcTree [label="{OcTree\<T,U\>|
 			  Cuboid\<U\> boundary\l|
 			  unsigned int capacity\l|
-			  std::vector\<Node\> nodes[capacity]\l|
+			  std::vector\<Node\<T,U\>\> nodes[capacity]\l|
 			  OcTree * NWN\l|
 			  OcTree * NEN\l|
 			  OcTree * SEN\l|
@@ -49,9 +49,9 @@ graph classes {
 			  OcTree * NES\l|
 			  OcTree * SES\l|
 			  OcTree * SWS\l|
-			  bool insert(Node node)\l|
-			  std::vector\<Node\> query(Cuboid range)\l|
-			  std::vector\<Node\> query(Sphere range)\l|
+			  bool insert(Node\<T,U\> node)\l|
+			  std::vector\<Node\<T,U\>\> query(Cuboid\<U\> range)\l|
+			  std::vector\<Node\<T,U\>\> query(Sphere\<U\> range)\l|
 			  void subdivide()\l}"]
 	
 	Vector -- Element
