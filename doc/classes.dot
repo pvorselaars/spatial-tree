@@ -3,38 +3,44 @@ graph classes {
 	graph [bgcolor=transparent]
 	node [shape=record,style=filled,fillcolor=white]
 
-	Element [label="{Node\<T,U\>|
+	Vector [label="{Vector\<U\>|
 			  U x\l|
 			  U y\l|
-			  U z\l|
+			  U z\l}"]
+
+	Element [label="{Node\<T,U\>|
+			  Vector\<U\> position\l|
 			  T * data\l}"]
 
-	AABB [label="{\N\<U\>|
-			U x\l|
-			U y\l|
-			U z\l|
-			U w\l|
-			U h\l|
-			U d\l|
-			bool contains(Node node)\l|
-			bool intersects(AABB other)\l}"]
+	Sphere [label="{Sphere\<U\>|
+			Vector\<U\> position\l|
+			U radius\l|
+			bool contains(const Node\<T,U\> &node)\l|
+			bool intersects(const Sphere\<U\> &other)\l}"]
 
-	QuadTree [label="{\N\<T,U\>|
-			   AABB\<U\> boundary\l|
+	Cuboid [label="{Cuboid\<U\>|
+			Vector\<U\> position\l|
+			Vector\<U\> dimensions\l|
+			bool contains(const Node\<T,U\> &node)\l|
+			bool intersects(const Cuboid\<U\> &other)\l}"]
+
+	QuadTree [label="{QuadTree\<T,U\>|
+			   Cuboid\<U\> boundary\l|
 			   unsigned int capacity\l|
-			   std::vector\<Node\> nodes[capacity]\l|
+			   std::vector\<Node\<T,U\>\> nodes[capacity]\l|
 			   QuadTree * NW\l|
 			   QuadTree * NE\l|
 			   QuadTree * SE\l|
 			   QuadTree * SW\l|
-			   bool insert(Node node)\l|
-			   std::vector\<Node\> query(AABB range)\l|
+			   bool insert(Node\<T,U\> node)\l|
+			   std::vector\<Node\<T,U\>\> query(Cuboid\<U\> range)\l|
+			   std::vector\<Node\<T,U\>\> query(Sphere\<U\> range)\l|
 			   void subdivide()\l}"]
 	
-	OcTree [label="{\N\<T,U\>|
-			  AABB\<U\> boundary\l|
+	OcTree [label="{OcTree\<T,U\>|
+			  Cuboid\<U\> boundary\l|
 			  unsigned int capacity\l|
-			  std::vector\<Node\> nodes[capacity]\l|
+			  std::vector\<Node\<T,U\>\> nodes[capacity]\l|
 			  OcTree * NWN\l|
 			  OcTree * NEN\l|
 			  OcTree * SEN\l|
@@ -43,15 +49,18 @@ graph classes {
 			  OcTree * NES\l|
 			  OcTree * SES\l|
 			  OcTree * SWS\l|
-			  bool insert(Node node)\l|
-			  std::vector\<Node\> query(AABB range)\l|
+			  bool insert(Node\<T,U\> node)\l|
+			  std::vector\<Node\<T,U\>\> query(Cuboid\<U\> range)\l|
+			  std::vector\<Node\<T,U\>\> query(Sphere\<U\> range)\l|
 			  void subdivide()\l}"]
 	
-	
+	Vector -- Element
+	Vector -- Cuboid
+	Vector -- Sphere
 	Element -- QuadTree
 	Element -- OcTree
-	AABB -- QuadTree
-	AABB -- OcTree
+	Cuboid -- QuadTree
+	Cuboid -- OcTree
 	QuadTree -- QuadTree
 	OcTree -- OcTree
 
