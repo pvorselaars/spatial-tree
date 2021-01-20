@@ -110,6 +110,9 @@ class Node {
 };
 
 template <class U>
+class Sphere;
+
+template <class U>
 class Cuboid {
 	public:
 	Cuboid(U X, U Y, U Z, U W, U H, U D) : 
@@ -134,13 +137,32 @@ class Cuboid {
 			(v.z >= position.z - dimensions.z) && (v.z <= position.z + dimensions.z));
 	}
 
-	bool intersect(const Cuboid &other) const {
+	bool intersect(const Cuboid<U> &other) const {
 		
 		if ( abs(position.x - other.position.x) >= (dimensions.x + other.dimensions.x) ) return false;
 		if ( abs(position.y - other.position.y) >= (dimensions.y + other.dimensions.y) ) return false;
 		if ( abs(position.z - other.position.z) >= (dimensions.z + other.dimensions.z) ) return false;
 
 		return true;
+	}
+	
+	bool intersect(const Sphere<U> &other) const {
+
+		Vector<U> C1(dimensions.x, dimensions.y, dimensions.z);
+		Vector<U> C2(-dimensions.x, -dimensions.y, -dimensions.z);
+
+		C1 += position;
+		C2 += position;
+		U R2 = other.radius*other.radius;
+
+		if(other.position.x < C1.x) R2 -= (other.position.x - C1.x)*(other.position.x - C1.x);
+		else if(other.position.x > C2.x) R2 -= (other.position.x - C2.x)*(other.position.x - C2.x);
+		if(other.position.y < C1.y) R2 -= (other.position.y - C1.y)*(other.position.y - C1.y);
+		else if(other.position.y > C2.y) R2 -= (other.position.y - C2.y)*(other.position.y - C2.y);
+		if(other.position.z < C1.z) R2 -= (other.position.z - C1.z)*(other.position.z - C1.z);
+		else if(other.position.z > C2.z) R2 -= (other.position.z - C2.z)*(other.position.z - C2.z);
+		return R2 >= 0;
+		
 	}
 };
 
@@ -183,7 +205,7 @@ class Sphere {
 		else if(position.y > C2.y) R2 -= (position.y - C2.y)*(position.y - C2.y);
 		if(position.z < C1.z) R2 -= (position.z - C1.z)*(position.z - C1.z);
 		else if(position.z > C2.z) R2 -= (position.z - C2.z)*(position.z - C2.z);
-		return R2 > 0;
+		return R2 >= 0;
 		
 	}
 
@@ -320,6 +342,29 @@ class QuadTree {
 	}
 
 	std::vector<Node<T,U>> * query(Cuboid<U> range, std::vector<Node<T,U>> * found = new std::vector<Node<T,U>>()){
+
+		if (!boundary.intersect(range))
+			return found;
+
+		for(auto it = nodes.begin(); it != nodes.end(); it++){
+			Node<T,U> n = *it;
+			if(range.contains(n.position))
+				found->push_back(n);
+		}
+
+		if(divided){
+
+			NW->query(range, found);
+			NE->query(range, found);
+			SE->query(range, found);
+			SW->query(range, found);
+		}
+
+		return found;
+
+	}
+
+	std::vector<Node<T,U>> * query(Sphere<U> range, std::vector<Node<T,U>> * found = new std::vector<Node<T,U>>()){
 
 		if (!boundary.intersect(range))
 			return found;
@@ -560,4 +605,30 @@ class OcTree {
 
 	}
 
+	std::vector<Node<T,U>> * query(Sphere<U> range, std::vector<Node<T,U>> * found = new std::vector<Node<T,U>>()){
+
+		if (!boundary.intersect(range))
+			return found;
+
+		for(auto it = nodes.begin(); it != nodes.end(); it++){
+			Node<T,U> n = *it;
+			if(range.contains(n.position))
+				found->push_back(n);
+		}
+
+		if(divided){
+
+			NNW->query(range, found);
+			NNE->query(range, found);
+			NSE->query(range, found);
+			NSW->query(range, found);
+			SNW->query(range, found);
+			SNE->query(range, found);
+			SSE->query(range, found);
+			SSW->query(range, found);
+		}
+
+		return found;
+
+	}
 };
