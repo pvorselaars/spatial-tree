@@ -45,7 +45,7 @@
 <polyline fill="none" stroke="black" points="499.5,-474.5 742.5,-474.5 "/>
 <text text-anchor="start" x="507.5" y="-459.3" font-family="Times,serif" font-size="14.00">U radius</text>
 <polyline fill="none" stroke="black" points="499.5,-451.5 742.5,-451.5 "/>
-<text text-anchor="start" x="507.5" y="-436.3" font-family="Times,serif" font-size="14.00">bool contains(const Node&lt;T,U&gt; &amp;node)</text>
+<text text-anchor="start" x="507.5" y="-436.3" font-family="Times,serif" font-size="14.00">bool contains(const Vector&lt;U&gt; &amp;v)</text>
 <polyline fill="none" stroke="black" points="499.5,-428.5 742.5,-428.5 "/>
 <text text-anchor="start" x="507.5" y="-413.3" font-family="Times,serif" font-size="14.00">bool intersects(const Sphere&lt;U&gt; &amp;other)</text>
 </g>
@@ -64,7 +64,7 @@
 <polyline fill="none" stroke="black" points="93.5,-474.5 338.5,-474.5 "/>
 <text text-anchor="start" x="101.5" y="-459.3" font-family="Times,serif" font-size="14.00">Vector&lt;U&gt; dimensions</text>
 <polyline fill="none" stroke="black" points="93.5,-451.5 338.5,-451.5 "/>
-<text text-anchor="start" x="101.5" y="-436.3" font-family="Times,serif" font-size="14.00">bool contains(const Node&lt;T,U&gt; &amp;node)</text>
+<text text-anchor="start" x="101.5" y="-436.3" font-family="Times,serif" font-size="14.00">bool contains(const Vector&lt;U&gt; &amp;v)</text>
 <polyline fill="none" stroke="black" points="93.5,-428.5 338.5,-428.5 "/>
 <text text-anchor="start" x="101.5" y="-413.3" font-family="Times,serif" font-size="14.00">bool intersects(const Cuboid&lt;U&gt; &amp;other)</text>
 </g>

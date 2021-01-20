@@ -15,13 +15,13 @@ graph classes {
 	Sphere [label="{Sphere\<U\>|
 			Vector\<U\> position\l|
 			U radius\l|
-			bool contains(const Node\<T,U\> &node)\l|
+			bool contains(const Vector\<U\> &v)\l|
 			bool intersects(const Sphere\<U\> &other)\l}"]
 
 	Cuboid [label="{Cuboid\<U\>|
 			Vector\<U\> position\l|
 			Vector\<U\> dimensions\l|
-			bool contains(const Node\<T,U\> &node)\l|
+			bool contains(const Vector\<U\> &v)\l|
 			bool intersects(const Cuboid\<U\> &other)\l}"]
 
 	QuadTree [label="{QuadTree\<T,U\>|
