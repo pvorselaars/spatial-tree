@@ -12,10 +12,6 @@ jobs:
     steps:
       - uses: actions/checkout@v1
       - name: get dependency
-        run: git clone https://github.com/catchorg/Catch2.git
-      - name: build dependency
-        run: cd Catch2 && cmake -Bbuild -H. -DBUILD_TESTING=OFF
-      - name: install dependency
-        run: sudo cmake --build Catch2/build/ --target install
+        run: cd tests && wget https://github.com/catchorg/Catch2/releases/download/v2.13.4/catch.hpp
       - name: run tests
         run: cd tests && make && ./tests
