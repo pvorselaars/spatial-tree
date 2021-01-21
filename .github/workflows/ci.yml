@@ -1,0 +1,17 @@
+name: ci
+
+on:
+  push:
+      paths-ignore:
+          - 'doc/**'
+
+jobs:
+  unit-tests:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v1
+      - name: install dependencies
+        run: sudo apt-get update && sudo apt-get install catch2
+      - name: run tests
+        run: cd tests && make
