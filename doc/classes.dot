@@ -33,6 +33,7 @@ graph classes {
 			   QuadTree * SE\l|
 			   QuadTree * SW\l|
 			   bool insert(Node\<T,U\> node)\l|
+			   bool remove(T node)\l|
 			   std::vector\<Node\<T,U\>\> query(Cuboid\<U\> range)\l|
 			   std::vector\<Node\<T,U\>\> query(Sphere\<U\> range)\l|
 			   void subdivide()\l}"]
@@ -50,6 +51,7 @@ graph classes {
 			  OcTree * SES\l|
 			  OcTree * SWS\l|
 			  bool insert(Node\<T,U\> node)\l|
+			  bool remove(T node)\l|
 			  std::vector\<Node\<T,U\>\> query(Cuboid\<U\> range)\l|
 			  std::vector\<Node\<T,U\>\> query(Sphere\<U\> range)\l|
 			  void subdivide()\l}"]
