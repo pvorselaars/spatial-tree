@@ -1,7 +1,3 @@
-.SILENT: test
-test: tests
-	./tests
-
 tests: tests.o
 	g++ -o tests tests.o
 
