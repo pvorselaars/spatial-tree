@@ -12,6 +12,9 @@ jobs:
     steps:
       - uses: actions/checkout@v1
       - name: install dependencies
-        run: sudo apt-get update && sudo apt-get install catch2
+        run: git clone https://github.com/catchorg/Catch2.git
+        run: cd Catch2
+        run: cmake -Bbuild -H. -DBUILD_TESTING=OFF
+        run: sudo cmake --build build/ --target install
       - name: run tests
         run: cd tests && make
