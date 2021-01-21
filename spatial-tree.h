@@ -317,7 +317,18 @@ class QuadTree {
 			}
 				
 		}
+
+		if(divided){
+			
+			NW->remove(node);
+			NE->remove(node);
+			SE->remove(node);
+			SW->remove(node);
+
+		}
+			
 		return false;
+
 	}
 
 	void subdivide(){
@@ -511,33 +522,33 @@ class OcTree {
 		}	
 	}
 
-	bool remove(Node<T,U> node){
-
-		if(!boundary.contains(node.position))
-			return false;
+	bool remove(T node){
 
 		if(nodes.size() == 0)
 			return false;
 		
 		for(auto it = nodes.begin(); it != nodes.end(); it++){
-			if(it->data == node.data){
+			if(it->data == node){
 				nodes.erase(it);
 				return true;
 			}
 				
 		}
 
-		NNW->remove(node);
-		NNE->remove(node);
-		NSE->remove(node);
-		NSW->remove(node);
-		SNW->remove(node);
-		SNE->remove(node);
-		SSE->remove(node);
-		SSW->remove(node);
-		
-		return true;
+		if(divided){
+			
+			NNW->remove(node);
+			NNE->remove(node);
+			NSE->remove(node);
+			NSW->remove(node);
+			SNW->remove(node);
+			SNE->remove(node);
+			SSE->remove(node);
+			SSW->remove(node);
 
+		}
+
+		return false;
 
 	}
 
