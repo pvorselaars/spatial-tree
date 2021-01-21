@@ -11,10 +11,11 @@ jobs:
 
     steps:
       - uses: actions/checkout@v1
-      - name: install dependencies
+      - name: get dependency
         run: git clone https://github.com/catchorg/Catch2.git
-        run: cd Catch2
-        run: cmake -Bbuild -H. -DBUILD_TESTING=OFF
+      - name: build dependency
+        run: cd Catch2 && cmake -Bbuild -H. -DBUILD_TESTING=OFF
+      - name: install dependency
         run: sudo cmake --build build/ --target install
       - name: run tests
-        run: cd tests && make
+        run: cd tests && make && ./tests
