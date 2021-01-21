@@ -16,6 +16,6 @@ jobs:
       - name: build dependency
         run: cd Catch2 && cmake -Bbuild -H. -DBUILD_TESTING=OFF
       - name: install dependency
-        run: sudo cmake --build build/ --target install
+        run: sudo cmake --build Catch2/build/ --target install
       - name: run tests
         run: cd tests && make && ./tests
