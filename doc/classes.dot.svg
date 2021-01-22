@@ -28,7 +28,7 @@
 <polyline fill="none" stroke="black" points="356.5,-474.5 481.5,-474.5 "/>
 <text text-anchor="start" x="364.5" y="-459.3" font-family="Times,serif" font-size="14.00">Vector&lt;U&gt; position</text>
 <polyline fill="none" stroke="black" points="356.5,-451.5 481.5,-451.5 "/>
-<text text-anchor="start" x="364.5" y="-436.3" font-family="Times,serif" font-size="14.00">T * data</text>
+<text text-anchor="start" x="364.5" y="-436.3" font-family="Times,serif" font-size="14.00">T data</text>
 </g>
 <!-- Vector&#45;&#45;Element -->
 <g id="edge1" class="edge">
@@ -91,9 +91,9 @@
 <polyline fill="none" stroke="black" points="0,-184.5 300,-184.5 "/>
 <text text-anchor="start" x="8" y="-169.3" font-family="Times,serif" font-size="14.00">QuadTree * SW</text>
 <polyline fill="none" stroke="black" points="0,-161.5 300,-161.5 "/>
-<text text-anchor="start" x="8" y="-146.3" font-family="Times,serif" font-size="14.00">bool insert(Node&lt;T,U&gt; node)</text>
+<text text-anchor="start" x="8" y="-146.3" font-family="Times,serif" font-size="14.00">bool insert(U x, U y, U z, T data)</text>
 <polyline fill="none" stroke="black" points="0,-138.5 300,-138.5 "/>
-<text text-anchor="start" x="8" y="-123.3" font-family="Times,serif" font-size="14.00">bool remove(T node)</text>
+<text text-anchor="start" x="8" y="-123.3" font-family="Times,serif" font-size="14.00">bool remove(T data)</text>
 <polyline fill="none" stroke="black" points="0,-115.5 300,-115.5 "/>
 <text text-anchor="start" x="8" y="-100.3" font-family="Times,serif" font-size="14.00">std::vector&lt;Node&lt;T,U&gt;&gt; query(Cuboid&lt;U&gt; range)</text>
 <polyline fill="none" stroke="black" points="0,-92.5 300,-92.5 "/>

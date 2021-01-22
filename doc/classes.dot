@@ -10,7 +10,7 @@ graph classes {
 
 	Element [label="{Node\<T,U\>|
 			  Vector\<U\> position\l|
-			  T * data\l}"]
+			  T data\l}"]
 
 	Sphere [label="{Sphere\<U\>|
 			Vector\<U\> position\l|
@@ -31,8 +31,8 @@ graph classes {
 			   QuadTree * NE\l|
 			   QuadTree * SE\l|
 			   QuadTree * SW\l|
-			   bool insert(Node\<T,U\> node)\l|
-			   bool remove(T node)\l|
+			   bool insert(U x, U y, U z, T data)\l|
+			   bool remove(T data)\l|
 			   std::vector\<Node\<T,U\>\> query(Cuboid\<U\> range)\l|
 			   std::vector\<Node\<T,U\>\> query(Sphere\<U\> range)\l|
 			   void subdivide()\l}"]

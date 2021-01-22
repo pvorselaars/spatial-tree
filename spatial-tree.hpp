@@ -310,7 +310,10 @@ class QuadTree {
 	QuadTree * SE;
 	QuadTree * SW;
 	
-	bool insert(Node<T,U> node){
+	bool insert(U x, U y, U z, T data){
+
+		Node<T,U> node(x,y,z,data);
+
 		if(!boundary.contains(node.position))
 			return false;
 
@@ -325,16 +328,16 @@ class QuadTree {
 			}
 
 			if(NW->boundary.contains(node.position))
-				return NW->insert(node);
+				return NW->insert(x,y,z,data);
 
 			if(NE->boundary.contains(node.position))
-				return NE->insert(node); 
+				return NE->insert(x,y,z,data); 
 
 			if(SE->boundary.contains(node.position))
-				return SE->insert(node);
+				return SE->insert(x,y,z,data);
 
 			if(SW->boundary.contains(node.position))
-				return SW->insert(node);
+				return SW->insert(x,y,z,data);
 
 		return false;
 		}	
