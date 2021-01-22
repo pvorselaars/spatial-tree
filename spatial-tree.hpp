@@ -144,6 +144,16 @@ class Cuboid {
 	Vector<U> position;
 	Vector<U> dimensions;
 
+	bool operator==(const Cuboid &other) const
+	{
+		return (position == other.position && dimensions == other.dimensions);
+	}
+
+	bool operator!=(const Cuboid &other) const
+	{
+		return (position != other.position || dimensions != other.dimensions);
+	}
+
 	bool contains(const Vector<U> &v) const {
 		
 		return ((v.x >= position.x - dimensions.x) && (v.x <= position.x + dimensions.x) &&
@@ -161,6 +171,8 @@ class Cuboid {
 	}
 	
 	bool intersect(const Sphere<U> &other) const {
+
+		if(position == other.position) return true;
 
 		Vector<U> C1(dimensions.x, dimensions.y, dimensions.z);
 		Vector<U> C2(-dimensions.x, -dimensions.y, -dimensions.z);
@@ -198,6 +210,17 @@ class Sphere {
 	Vector<U> position;
 	U radius;
 
+	bool operator==(const Sphere &other) const
+	{
+		return (position == other.position && radius == other.radius);
+	}
+
+	bool operator!=(const Sphere &other) const
+	{
+		return (position != other.position || radius != other.radius);
+	}
+
+
 	bool contains(const Vector<U> &v) const {
 
 		return ((v.x - position.x)*(v.x - position.x) + (v.y - position.y)*(v.y - position.y) + (v.z - position.z)*(v.z - position.z) <= radius*radius);
@@ -205,6 +228,8 @@ class Sphere {
 	}
 
 	bool intersect(const Cuboid<U> &other) const {
+
+		if(position == other.position) return true;
 
 		Vector<U> C1(other.dimensions.x, other.dimensions.y, other.dimensions.z);
 		Vector<U> C2(-other.dimensions.x, -other.dimensions.y, -other.dimensions.z);
