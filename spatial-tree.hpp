@@ -8,63 +8,35 @@ class Vector {
 
 	Vector(U a = 0, U b = 0, U c = 0) : x(a), y(b), z(c) {};
 
-	Vector operator+(const Vector &other) const
-	{
-		return Vector(x+other.x, y+other.y, z+other.z);
-	}
-
 	Vector& operator+=(const Vector &other)
 	{
-		this->x += other.x;
-		this->y += other.y;
-		this->z += other.z;
+		x += other.x;
+		y += other.y;
+		z += other.z;
 		return *this;
 	}
 
-	Vector operator-(const Vector &other) const
+	Vector& operator-=(const Vector &other)
 	{
-		return Vector(x-other.x, y-other.y, z-other.z);
+		x -= other.x;
+		y -= other.y;
+		z -= other.z;
+		return *this;
 	}
-	
+
 	bool operator==(const Vector &other) const
 	{
 		return (x == other.x && y == other.y && z == other.z);
 	}
 
-	bool operator<(const Vector &other) const
+	bool operator!=(const Vector &other) const
 	{
-		if( x < other.x ) return true;
-		if( other.x < x ) return false;
-		if( y < other.y ) return true;
-		if( other.y < y ) return false;
-		if( z < other.z ) return true;
-		if( other.z < z ) return false;
-		return false;
-	}
-
-	bool operator>(const Vector &other) const
-	{
-		return ((z > other.z) || (y > other.y) || (x > other.x));
-	}
-
-	Vector operator*(const Vector &other) const
-	{
-		return Vector(x*other.x, y * other.y, z * other.z);
-	}
-
-	Vector operator*(const U &other) const
-	{
-		return Vector(x*other, y * other, z * other);
-	}
-
-	Vector operator/(const U &other) const
-	{
-		return Vector(x / other, y / other, z / other);
+		return (x != other.x || y != other.y || z == other.z);
 	}
 
 	void Normalize()
 	{
-		U mag = Magnitude();
+		float mag = Magnitude();
 		if(mag==0)
 			return;
 
@@ -78,7 +50,7 @@ class Vector {
 		return (x * other.x + y * other.y + z * other.z);
 	}
 
-	U Magnitude(){
+	double Magnitude(){
 
 		return (sqrt(x*x + y*y + z*z));
 	}
@@ -93,6 +65,48 @@ class Vector {
 
 	U x, y, z;
 };
+
+template <class U>
+Vector<U> operator+(const Vector<U> &lhs, const Vector<U> &rhs)
+{
+	return Vector<U>(lhs.x + rhs.x, lhs.y + rhs.y, lhs.z + rhs.z);
+}
+
+template <class U>
+Vector<U> operator-(Vector<U> &lhs, const Vector<U> &rhs)
+{
+	return Vector<U>(lhs.x - rhs.x, lhs.y - rhs.y, lhs.z - rhs.z);
+}
+
+template <class U>
+Vector<U> operator*(const Vector<U> &lhs, const Vector<U> &rhs)
+{
+	return Vector<U>(lhs.x * rhs.x, lhs.y * rhs.y, lhs.z * rhs.z);
+}
+
+template <class U>
+Vector<U> operator*(Vector<U> &lhs, const U &rhs)
+{
+	return Vector<U>(lhs.x * rhs, lhs.y * rhs, lhs.z * rhs);
+}
+	
+template <class U>
+Vector<U> operator*(const U &lhs, Vector<U> &rhs)
+{
+	return Vector<U>(lhs * rhs.x, lhs * rhs.y, lhs * rhs.z);
+}
+
+template <class U>
+Vector<U> operator/(const Vector<U> &lhs, const Vector<U> &rhs)
+{
+	return Vector<U>(lhs.x / rhs.x, lhs.y / rhs.y, lhs.z / rhs.z);
+}
+
+template <class U>
+Vector<U> operator/(Vector<U> &lhs, const U &rhs)
+{
+	return Vector<U>(lhs.x / rhs, lhs.y / rhs, lhs.z / rhs);
+}
 
 template <class U>
 std::ostream& operator<<(std::ostream& os, const Vector<U>& v){
