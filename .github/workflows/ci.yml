@@ -1,0 +1,17 @@
+name: ci
+
+on:
+  push:
+      paths-ignore:
+          - 'doc/**'
+
+jobs:
+  unit-tests:
+    runs-on: ubuntu-20.04
+
+    steps:
+      - uses: actions/checkout@v1
+      - name: get dependency
+        run: cd tests && wget https://github.com/catchorg/Catch2/releases/download/v2.13.4/catch.hpp
+      - name: run tests
+        run: cd tests && make && ./tests
