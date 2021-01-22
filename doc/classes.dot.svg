@@ -132,9 +132,9 @@
 <polyline fill="none" stroke="black" points="336,-138.5 636,-138.5 "/>
 <text text-anchor="start" x="344" y="-123.3" font-family="Times,serif" font-size="14.00">OcTree * SWS</text>
 <polyline fill="none" stroke="black" points="336,-115.5 636,-115.5 "/>
-<text text-anchor="start" x="344" y="-100.3" font-family="Times,serif" font-size="14.00">bool insert(Node&lt;T,U&gt; node)</text>
+<text text-anchor="start" x="344" y="-100.3" font-family="Times,serif" font-size="14.00">bool insert(U x, U y, U z, T data)</text>
 <polyline fill="none" stroke="black" points="336,-92.5 636,-92.5 "/>
-<text text-anchor="start" x="344" y="-77.3" font-family="Times,serif" font-size="14.00">bool remove(T node)</text>
+<text text-anchor="start" x="344" y="-77.3" font-family="Times,serif" font-size="14.00">bool remove(T data)</text>
 <polyline fill="none" stroke="black" points="336,-69.5 636,-69.5 "/>
 <text text-anchor="start" x="344" y="-54.3" font-family="Times,serif" font-size="14.00">std::vector&lt;Node&lt;T,U&gt;&gt; query(Cuboid&lt;U&gt; range)</text>
 <polyline fill="none" stroke="black" points="336,-46.5 636,-46.5 "/>

@@ -452,7 +452,9 @@ class OcTree {
 		SNW(),
 		SNE(),
 		SSE(),
-		SSW(){};
+		SSW(){
+			nodes.reserve(8);
+		};
 
 	OcTree<T,U>(Cuboid<U> b, unsigned int c = 8) :
 		boundary(b),
@@ -513,7 +515,10 @@ class OcTree {
 	OcTree * SSE;
 	OcTree * SSW;
 	
-	bool insert(Node<T,U> node){
+	bool insert(U x, U y, U z, T data){
+
+		Node<T,U> node(x,y,z,data);
+
 		if(!boundary.contains(node.position))
 			return false;
 
@@ -528,28 +533,28 @@ class OcTree {
 			}
 
 			if(NNW->boundary.contains(node.position))
-				return NNW->insert(node);
+				return NNW->insert(x,y,z,data);
 
 			if(NNE->boundary.contains(node.position))
-				return NNE->insert(node);
+				return NNE->insert(x,y,z,data);
 
 			if(NSE->boundary.contains(node.position))
-				return NSE->insert(node);
+				return NSE->insert(x,y,z,data);
 
 			if(NSW->boundary.contains(node.position))
-				return NSW->insert(node);
+				return NSW->insert(x,y,z,data);
 
 			if(SNW->boundary.contains(node.position))
-				return SNW->insert(node); 
+				return SNW->insert(x,y,z,data); 
 
 			if(SNE->boundary.contains(node.position))
-				return SNE->insert(node);
+				return SNE->insert(x,y,z,data);
 
 			if(SSE->boundary.contains(node.position))
-				return SSE->insert(node);
+				return SSE->insert(x,y,z,data);
 
 			if(SSW->boundary.contains(node.position))
-				return SSW->insert(node);
+				return SSW->insert(x,y,z,data);
 
 		return false;
 
