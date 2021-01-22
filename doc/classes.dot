@@ -26,7 +26,6 @@ graph classes {
 
 	QuadTree [label="{QuadTree\<T,U\>|
 			   Cuboid\<U\> boundary\l|
-			   unsigned int capacity\l|
 			   std::vector\<Node\<T,U\>\> nodes[capacity]\l|
 			   QuadTree * NW\l|
 			   QuadTree * NE\l|
@@ -40,7 +39,6 @@ graph classes {
 	
 	OcTree [label="{OcTree\<T,U\>|
 			  Cuboid\<U\> boundary\l|
-			  unsigned int capacity\l|
 			  std::vector\<Node\<T,U\>\> nodes[capacity]\l|
 			  OcTree * NWN\l|
 			  OcTree * NEN\l|

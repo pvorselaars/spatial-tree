@@ -262,18 +262,16 @@ class QuadTree {
 	QuadTree<T,U>() : 
 		boundary(),
 		nodes(),
-		capacity(4),
 		NW(),
 		NE(),
 		SE(),
 		SW(){
-			nodes.reserve(capacity);
+			nodes.reserve(4);
 	};
 
 	QuadTree<T,U>(Cuboid<U> b, unsigned int c = 4) :
 		boundary(b),
 		nodes(),
-		capacity(c),
 		NW(),
 		NE(),
 		SE(),
@@ -283,7 +281,6 @@ class QuadTree {
 
 	QuadTree<T, U> (const QuadTree<T, U>& other) : boundary(other.boundary), 
 						      nodes(other.nodes),
-						      capacity(other.capacity),
 						      NW(),
 						      NE(),
 						      SE(),
@@ -306,7 +303,6 @@ class QuadTree {
 
 	Cuboid<U> boundary;
 	std::vector<Node<T,U>> nodes;
-	unsigned int capacity;
 	bool divided = false;
 
 	QuadTree * NW;
@@ -318,7 +314,7 @@ class QuadTree {
 		if(!boundary.contains(node.position))
 			return false;
 
-		if(nodes.size() < capacity){
+		if(nodes.size() < nodes.capacity()){
 			nodes.push_back(node);
 			return true;
 		}else{
@@ -446,7 +442,6 @@ class OcTree {
 	OcTree<T,U>() : 
 		boundary(),
 		nodes(),
-		capacity(8),
 		NNW(),
 		NNE(),
 		NSE(),
@@ -459,7 +454,6 @@ class OcTree {
 	OcTree<T,U>(Cuboid<U> b, unsigned int c = 8) :
 		boundary(b),
 		nodes(),
-		capacity(c),
 		NNW(),
 		NNE(),
 		NSE(),
@@ -474,7 +468,6 @@ class OcTree {
 
 	OcTree<T, U> (const OcTree<T, U>& other) : boundary(other.boundary), 
 						   nodes(other.nodes),
-						   capacity(other.capacity),
 						   NNW(),
 						   NNE(),
 						   NSE(),
@@ -506,7 +499,6 @@ class OcTree {
 
 	Cuboid<U> boundary;
 	std::vector<Node<T,U>> nodes;
-	unsigned int capacity;
 	bool divided = false;
 
 	OcTree * NNW;
@@ -522,7 +514,7 @@ class OcTree {
 		if(!boundary.contains(node.position))
 			return false;
 
-		if(nodes.size() < capacity){
+		if(nodes.size() < nodes.capacity()){
 			nodes.push_back(node);
 			return true;
 		}else{
