@@ -149,3 +149,101 @@ TEST_CASE("spheric geometry", "[Sphere]"){
 		REQUIRE(s1.intersect(s0) == false);
 	}
 }
+
+TEST_CASE("quadtrees", "[QuadTree]"){
+	
+	Cuboid<int> c0;
+	Cuboid<int> c1(0,0,0,5,5,5);
+
+	QuadTree<int*,int> q0;
+	QuadTree<int*,int> q1(c1,10);
+
+	SECTION("quadtree dimensions"){
+		REQUIRE(q0.boundary.dimensions == c0.dimensions);
+		REQUIRE(q1.boundary.dimensions == c1.dimensions);
+	}
+
+	SECTION("quadtree capacity and size"){
+		REQUIRE(q0.nodes.capacity() == 4);
+		REQUIRE(q1.nodes.capacity() == 10);
+
+		REQUIRE(q0.nodes.size() == 0);
+		REQUIRE(q1.nodes.size() == 0);
+	}
+
+	SECTION("node insertion"){
+
+		int* n0 = new int(0);
+		int* n1 = new int(1);
+
+		REQUIRE(q0.insert(0,0,0,n0));
+		REQUIRE(q0.insert(0,0,0,n1));
+
+		REQUIRE(q0.nodes.size() == 2);
+
+	}
+
+	SECTION("node removal"){
+
+		int* n0 = new int(0);
+		int* n1 = new int(1);
+
+		REQUIRE(q0.insert(0,0,0,n0));
+		REQUIRE(q0.insert(0,0,0,n1));
+
+		REQUIRE(q0.remove(n0));
+
+		REQUIRE(q0.nodes.size() == 1);
+
+	}
+
+}
+
+TEST_CASE("octrees", "[OcTree]"){
+	
+	Cuboid<int> c0;
+	Cuboid<int> c1(0,0,0,5,5,5);
+
+	OcTree<int*,int> o0;
+	OcTree<int*,int> o1(c1,10);
+
+	SECTION("octree dimensions"){
+		REQUIRE(o0.boundary.dimensions == c0.dimensions);
+		REQUIRE(o1.boundary.dimensions == c1.dimensions);
+	}
+
+	SECTION("octree capacity and size"){
+		REQUIRE(o0.nodes.capacity() == 8);
+		REQUIRE(o1.nodes.capacity() == 10);
+
+		REQUIRE(o0.nodes.size() == 0);
+		REQUIRE(o1.nodes.size() == 0);
+	}
+
+	SECTION("node insertion"){
+
+		int* n0 = new int(0);
+		int* n1 = new int(1);
+
+		REQUIRE(o0.insert(0,0,0,n0));
+		REQUIRE(o0.insert(0,0,0,n1));
+
+		REQUIRE(o0.nodes.size() == 2);
+
+	}
+
+	SECTION("node removal"){
+
+		int* n0 = new int(0);
+		int* n1 = new int(1);
+
+		REQUIRE(o0.insert(0,0,0,n0));
+		REQUIRE(o0.insert(0,0,0,n1));
+
+		REQUIRE(o0.remove(n0));
+
+		REQUIRE(o0.nodes.size() == 1);
+
+	}
+
+}
