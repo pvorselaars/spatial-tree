@@ -7,11 +7,13 @@ on:
 
 jobs:
   unit-tests:
-    runs-on: ubuntu-20.04
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macos-latest, windows-latest]
+    runs-on: ${{matrix.os}}
 
     steps:
-      - uses: actions/checkout@v1
-      - name: get dependency
-        run: cd tests && wget https://github.com/catchorg/Catch2/releases/download/v2.13.4/catch.hpp
+      - name: checkout repo
+        uses: actions/checkout@v1
       - name: run tests
         run: cd tests && make && ./tests
