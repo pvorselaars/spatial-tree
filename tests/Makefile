@@ -1,8 +1,6 @@
-tests: tests.o
-	g++ -o tests tests.o
-
-tests.o: 
-	g++ -c -o tests.o tests.cpp -I../
+INCLUDE = -I../
+tests: tests.cpp
+	$(CXX) $? $(INCLUDE) -o $@
 
 clean:
-	rm *.o tests
+	rm tests
