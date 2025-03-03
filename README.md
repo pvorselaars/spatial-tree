@@ -1,6 +1,6 @@
 # spatial-tree
 
-![ci](https://github.com/pvorselaars/spatial-tree/workflows/ci/badge.svg?branch=unit-tests)
+![ci](https://github.com/pvorselaars/spatial-tree/workflows/ci/badge.svg)
 
 A simple C++ template library that implements quadtrees and octrees for different classes and coordinate precision.
 
